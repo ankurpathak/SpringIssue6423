@@ -10,6 +10,9 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAut
 import org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication(exclude = {
@@ -20,11 +23,16 @@ import org.springframework.context.annotation.ImportResource;
 		OAuth2ResourceServerAutoConfiguration.class,
 		OAuth2ClientAutoConfiguration.class
 })
+@Configuration
 @ImportResource({ "classpath*:spring-beans.xml" })
 public class Main extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Main.class, args);
+		//SpringApplication.run(Main.class, args);
+		AnnotationConfigApplicationContext context= new AnnotationConfigApplicationContext();
+		context.setAllowBeanDefinitionOverriding(false);
+		context.register(Main.class);
+		context.refresh();
 	}
 
 	@Override

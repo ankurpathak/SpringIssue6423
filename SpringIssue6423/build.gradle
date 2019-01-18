@@ -6,7 +6,8 @@ plugins {
 
 def versionSpring = '5.+'
 def versionSpringBoot = '2.+'
-def versionSpringSecurity = '5.2.0.BUILD-SNAPSHOT'
+//def versionSpringSecurity = '5.2.0.BUILD-SNAPSHOT'
+def versionSpringSecurity = '5.1.3.RELEASE'
 
 
 
